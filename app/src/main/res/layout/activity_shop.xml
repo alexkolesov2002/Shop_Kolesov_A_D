@@ -4,32 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".Shop">
 
-
-    <EditText
-        android:id="@+id/Nazvanie"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="68dp"
-        android:hint="Название товара"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/Price"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:hint="Цена"
-        android:inputType="numberDecimal"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Nazvanie" />
 
     <TableLayout
         android:id="@+id/tableLayout"
@@ -38,40 +14,23 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Price"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.110000014">
 
         <TableRow
             android:id="@+id/row1"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
+            android:layout_height="match_parent">
 
 
             <Button
-                android:id="@+id/Add"
+                android:id="@+id/BuyAll"
                 android:layout_width="100dp"
                 android:layout_height="60dp"
-                android:layout_marginLeft="35dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="10dp"
-                android:text="Add" />
+                android:text="Buy"
+                android:layout_marginLeft="150dp">
 
-            <Button
-                android:id="@+id/Clear"
-                android:layout_width="100dp"
-                android:layout_height="60dp"
-                android:layout_margin="10dp"
-                android:text="Clear" />
-
-
-            <Button
-                android:id="@+id/NewPage"
-                android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:layout_margin="10dp"
-                android:text="Shop" />
+            </Button>
 
 
         </TableRow>
@@ -79,8 +38,8 @@
     </TableLayout>
 
     <ScrollView
-        android:layout_width="419dp"
-        android:layout_height="416dp"
+        android:layout_width="439dp"
+        android:layout_height="563dp"
         android:layout_weight="1"
         android:scrollbars="none"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -105,6 +64,28 @@
         </TableLayout>
     </ScrollView>
 
+    <TextView
+        android:id="@+id/SummBuf"
+        android:layout_width="102dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="228dp"
+        android:layout_marginEnd="1dp"
+        android:text="Сумма товаров"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/tableLayout"
+        app:layout_constraintEnd_toStartOf="@+id/SummKorzina"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-
+    <TextView
+        android:id="@+id/SummKorzina"
+        android:layout_width="110dp"
+        android:layout_height="27dp"
+        android:text="0"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/tableLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/SummBuf"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

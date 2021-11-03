@@ -1,6 +1,7 @@
 package com.example.shop_kolesov_a_d;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -19,12 +20,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button btnAdd, btnClear, btnBuy;
+    Button btnAdd, btnClear,  btnNewPage;
     EditText etNazvanie, etPrice;
     DBHelper dbHelper;
     ContentValues contentValues;
     SQLiteDatabase database;
-    TextView SumItog;
+
 
 
     @Override
@@ -45,10 +46,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         dbHelper = new DBHelper(this);
         database = dbHelper.getWritableDatabase();
 
-        btnBuy = (Button) findViewById(R.id.BuyAll);
-        btnBuy.setOnClickListener(this);
 
-        SumItog = (TextView) findViewById(R.id.SummKorzina);
+        btnNewPage= (Button) findViewById(R.id.NewPage);
+        btnNewPage.setOnClickListener(this);
+
+
 
         UpdateTable();
 
@@ -131,48 +133,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 DEL.setId(cursor.getInt(idIndex));
                 tbOUT.addView(DEL);
 
-                Button BUY = new Button(this);
-                BUY.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        View outBDRow = (View) view.getParent();
-                        ViewGroup outBD = (ViewGroup) outBDRow.getParent();
-                        outBD.removeView(outBDRow);
-                        outBD.invalidate();
-                        String find = "_id = ?";
-
-
-                        Cursor price = database.query(DBHelper.TABLE_GOODS, null, find, new String[]{String.valueOf(view.getId())}, null, null, null);
-                        double sumbuf = Float.valueOf(SumItog.getText().toString());
-                        double bufsum2 =0;
-                        if (price != null) {
-                            Log.d("mLog", "Cursor full");
-                            if (price.moveToFirst()) {
-                                int Price = price.getColumnIndex(DBHelper.KEY_PRICE);
-
-
-                                do {
-                                    bufsum2 = price.getDouble(Price);
-
-                                    Log.d("mLog", ""+ bufsum2);
-
-                                } while (price.moveToNext());
-                                UpdateTable();
-                            }
-                            price.close();
-                        } else
-                            Log.d("mLog", "Cursor is null");
-                        sumbuf = sumbuf+bufsum2;
-                        SumItog.setText(String.valueOf(sumbuf));
-                    }
-
-                });
-                params.weight = 1.0f;
-                BUY.setLayoutParams(params);
-                BUY.setText("Купить товар");
-                BUY.setId(cursor.getInt(idIndex));
-                tbOUT.addView(BUY);
-
                 tb2.addView(tbOUT);
 
 
@@ -191,12 +151,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         switch (v.getId()) {
 
-            case R.id.BuyAll:
-                Toast toast = Toast.makeText(getApplicationContext(),
-                         "Сумма заказа равна " + SumItog.getText(), Toast.LENGTH_SHORT);
-                toast.show();
-                SumItog.setText("0");
-                break;
 
             case R.id.Add:
 
@@ -212,6 +166,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
                 break;
+            case  R.id.NewPage:
+                Intent intent =new Intent(MainActivity.this, Shop.class);
+                startActivity(intent);
+                break;
 
             case R.id.Clear:
                 database.delete(DBHelper.TABLE_GOODS, null, null);
@@ -219,7 +177,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 dbOutput.removeAllViews();
                 etNazvanie.setText(null);
                 etPrice.setText(null);
-                SumItog.setText("0");
+
                 UpdateTable();
                 break;
 

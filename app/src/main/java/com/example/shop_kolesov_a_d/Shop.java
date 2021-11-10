@@ -20,10 +20,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class Shop extends AppCompatActivity implements View.OnClickListener {
 
-    Button btnBuy;
-    EditText etNazvanie, etPrice;
+    Button btnBuy,btnMain;
+
     DBHelper dbHelper;
-    ContentValues contentValues;
+
     SQLiteDatabase database;
     TextView SumItog;
 
@@ -37,6 +37,9 @@ public class Shop extends AppCompatActivity implements View.OnClickListener {
         database = dbHelper.getWritableDatabase();
         btnBuy = (Button) findViewById(R.id.BuyAll);
         btnBuy.setOnClickListener(this);
+        btnMain = (Button) findViewById(R.id.GoBack);
+        btnMain.setOnClickListener(this);
+
         SumItog = (TextView) findViewById(R.id.SummKorzina);
         UpdateTable();
 
@@ -133,7 +136,10 @@ public class Shop extends AppCompatActivity implements View.OnClickListener {
         dbHelper = new DBHelper(this);
 
         switch (v.getId()) {
-
+            case R.id.GoBack:
+                Intent intent =new Intent(this, MainActivity.class);
+                startActivity(intent);
+                break;
 
             case R.id.BuyAll:
 

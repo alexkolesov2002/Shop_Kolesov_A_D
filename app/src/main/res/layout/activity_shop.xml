@@ -28,7 +28,15 @@
                 android:layout_width="100dp"
                 android:layout_height="60dp"
                 android:text="Buy"
-                android:layout_marginLeft="150dp">
+                android:layout_marginLeft="100dp">
+            </Button>
+
+            <Button
+                android:id="@+id/GoBack"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:text="Database"
+                android:layout_marginLeft="10dp">
 
             </Button>
 

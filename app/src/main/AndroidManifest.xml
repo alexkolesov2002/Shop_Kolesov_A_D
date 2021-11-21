@@ -10,10 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Shop_Kolesov_A_D">
         <activity
+            android:name=".MainActivity"
+            android:exported="true" />
+        <activity
             android:name=".Shop"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Authorization"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

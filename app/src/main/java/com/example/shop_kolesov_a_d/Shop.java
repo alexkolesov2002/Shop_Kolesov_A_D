@@ -26,6 +26,8 @@ public class Shop extends AppCompatActivity implements View.OnClickListener {
 
     SQLiteDatabase database;
     TextView SumItog;
+    boolean pokaz1;
+    public  Shop (Boolean pokaz){pokaz = pokaz1;}
 
 
     @Override
@@ -39,7 +41,10 @@ public class Shop extends AppCompatActivity implements View.OnClickListener {
         btnBuy.setOnClickListener(this);
         btnMain = (Button) findViewById(R.id.GoBack);
         btnMain.setOnClickListener(this);
-
+        if (pokaz1 == false)
+        {
+            btnMain.setVisibility(View.GONE);
+        }
         SumItog = (TextView) findViewById(R.id.SummKorzina);
         UpdateTable();
 

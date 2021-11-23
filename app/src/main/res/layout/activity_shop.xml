@@ -28,7 +28,7 @@
                 android:layout_width="100dp"
                 android:layout_height="60dp"
                 android:text="Buy"
-                android:layout_marginLeft="100dp">
+                android:layout_marginLeft="15dp">
             </Button>
 
             <Button
@@ -36,6 +36,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="60dp"
                 android:text="Database"
+                android:layout_marginLeft="10dp">
+
+            </Button>
+            <Button
+                android:id="@+id/GoLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:text="Go page login"
                 android:layout_marginLeft="10dp">
 
             </Button>

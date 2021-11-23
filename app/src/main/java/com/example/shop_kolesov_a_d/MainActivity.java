@@ -20,7 +20,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button btnAdd, btnClear,  btnNewPage;
+    Button btnAdd, btnClear,  btnNewPage , btnGoLogin;
     EditText etNazvanie, etPrice;
     DBHelper dbHelper;
     ContentValues contentValues;
@@ -45,7 +45,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         dbHelper = new DBHelper(this);
         database = dbHelper.getWritableDatabase();
-
+        btnGoLogin = (Button) findViewById(R.id.GoLogin);
+        btnGoLogin.setOnClickListener(this);
 
         btnNewPage= (Button) findViewById(R.id.NewPage);
         btnNewPage.setOnClickListener(this);
@@ -180,7 +181,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 UpdateTable();
                 break;
-
+            case R.id.GoLogin:
+                Intent intent2 =new Intent(this, Authorization.class);
+                startActivity(intent2);
+                break;
 
             default:
                 break;

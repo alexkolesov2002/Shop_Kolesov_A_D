@@ -55,12 +55,15 @@ public class Authorization extends AppCompatActivity implements View.OnClickList
                     int passIndex = cursor.getColumnIndex(DBHelper.KEY_PASSWORD);
                     do{ if (etLogin.getText().toString().equals("admin") && etPass.getText().toString().equals("admin")) {
                         if (etLogin.getText().toString().equals(cursor.getString(loginIndex)) && etPass.getText().toString().equals(cursor.getString(passIndex))) {
+                            UserVisible.pokaz1 =true;
                             startActivity(new Intent(this, MainActivity.class));
                             check = true;
                             break;
                         }
                         } else if (etLogin.getText().toString().equals(cursor.getString(loginIndex)) && etPass.getText().toString().equals(cursor.getString(passIndex))) {
-                            startActivity(new Intent(this, Shop.class));
+                        UserVisible.pokaz1= false;
+                        Intent intent =new Intent(this, Shop.class);
+                        startActivity(intent);
                             check = true;
                             break;
                         }

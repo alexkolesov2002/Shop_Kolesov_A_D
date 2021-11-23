@@ -20,14 +20,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class Shop extends AppCompatActivity implements View.OnClickListener {
 
-    Button btnBuy,btnMain;
+    Button btnBuy,btnMain,btnGoLogin;
 
     DBHelper dbHelper;
 
     SQLiteDatabase database;
     TextView SumItog;
-    boolean pokaz1;
-    public  Shop (Boolean pokaz){pokaz = pokaz1;}
+
+
 
 
     @Override
@@ -41,7 +41,9 @@ public class Shop extends AppCompatActivity implements View.OnClickListener {
         btnBuy.setOnClickListener(this);
         btnMain = (Button) findViewById(R.id.GoBack);
         btnMain.setOnClickListener(this);
-        if (pokaz1 == false)
+        btnGoLogin = (Button) findViewById(R.id.GoLogin);
+        btnGoLogin.setOnClickListener(this);
+        if (UserVisible.pokaz1 == false)
         {
             btnMain.setVisibility(View.GONE);
         }
@@ -152,6 +154,10 @@ public class Shop extends AppCompatActivity implements View.OnClickListener {
                         "Сумма заказа равна " + SumItog.getText(), Toast.LENGTH_SHORT);
                 toast.show();
                 SumItog.setText("0");
+                break;
+            case R.id.GoLogin:
+                Intent intent2 =new Intent(this, Authorization.class);
+                startActivity(intent2);
                 break;
             default:
                 break;
